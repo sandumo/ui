@@ -37,6 +37,7 @@ export type FormProps<T extends Record<string, any>> = {
   onSubmit: (data: T) => Promise<SubmitHandlerReturnType<T>> | SubmitHandlerReturnType<T>;
   getValidationSchema?: (root: typeof zod) => zod.ZodRawShape;
   encType?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
+  className?: string;
 }
 
 export default function Form<FormData extends Record<string, any>>({
@@ -44,12 +45,14 @@ export default function Form<FormData extends Record<string, any>>({
   onSubmit,
   getValidationSchema,
   encType,
+  className,
 }: FormProps<FormData>) {
   const { errors, setErrors, pending, setPending } = useFormContext();
 
   return (
     <Box
       component="form"
+      className={className}
       method="post"
       encType={encType}
       onSubmit={handleSubmit(async (data: FormData) => {

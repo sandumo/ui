@@ -1,6 +1,6 @@
-import { Pagination as MuiPagination, PaginationItem } from '@mui/material';
+import { Pagination as MuiPagination, PaginationItem, PaginationProps as MuiPaginationProps } from '@mui/material';
 
-type PaginationProps = {
+type PaginationProps = Omit<MuiPaginationProps, 'onChange'> & {
   page: number;
   onChange?: (page: number) => void;
   count: number;
@@ -10,6 +10,8 @@ export default function Pagination({
   page,
   onChange,
   count,
+  sx,
+  ...props
 }: PaginationProps) {
   return (
     <MuiPagination
@@ -25,7 +27,7 @@ export default function Pagination({
             },
           },
         },
-
+        ...sx,
       }}
       renderItem={(item) => (
         <PaginationItem
@@ -43,6 +45,7 @@ export default function Pagination({
         />
       )}
       onChange={(e, pageIndex) => onChange?.(pageIndex - 1)}
+      {...props}
     />
   );
 }

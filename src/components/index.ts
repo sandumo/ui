@@ -18,9 +18,15 @@ export { default as BottomSheet } from './BottomSheet';
 export { default as FilePicker } from './FilePicker';
 export { default as FileInput } from './FileInput';
 export { default as TableRangePicker } from './TableRangePicker';
+export { default as Chip } from './Chip';
+export { default as ZoomInSheet } from './ZoomInSheet';
+export { default as ImageGallery } from './ImageGallery';
+export { default as Dialog } from './Dialog';
+export { default as Popup } from './Popup';
 
 export {
   Box,
   Grid,
   Tooltip,
+  Collapse,
 } from '@mui/material';

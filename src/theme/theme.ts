@@ -30,6 +30,8 @@ let theme = createTheme({
     tonalOffset: .88,
     primary: {
       main: '#418BF9',
+      // light: '#9E69FD',
+      dark: '#075DDF',
     },
     secondary: {
       main: '#19857b',
