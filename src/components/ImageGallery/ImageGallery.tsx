@@ -105,7 +105,7 @@ export default function ImageGallery<T>({
         <div className="absolute bottom-0 left-0 right-0 h-0 flex justify-center items-end">
           <div className="h-8 flex justify-center items-center not-last-child:mr-2">
             {images.map((i, index) => (
-              <div className={clsx('w-2 h-2 rounded-full bg-white opacity-50 drop-shadow-lg hover:opacity-90 cursor-pointer', index === currentIndex && 'opacity-100')} onClick={(e) => { e.stopPropagation(); setCurrentIndex(index); setPicked(true); }} />
+              <div className={clsx('w-2 h-2 rounded-full bg-white drop-shadow-lg hover:opacity-90 cursor-pointer', index === currentIndex ? 'opacity-100' : 'opacity-50')} onClick={(e) => { e.stopPropagation(); setCurrentIndex(index); setPicked(true); }} />
             ))}
           </div>
         </div>

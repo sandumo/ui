@@ -24,11 +24,14 @@ module.exports = {
       keyframes: {
         scaleUp: {
           '0%': { transform: 'scale(.85)', opacity: 0 },
+          '50%': { transform: 'scale(1.05)', opacity: 1 },
           '100%': { transform: 'scale(1)', opacity: 1 },
         },
 
         scaleDown: {
           '0%': { transform: 'scale(1)', opacity: 1 },
+          '50%': { transform: 'scale(1.05)', opacity: 1 },
+          '80%': { transform: 'scale(0.90)', opacity: 0 },
           '100%': { transform: 'scale(0.85)', opacity: 0 },
         },
         fadeIn: {
@@ -43,10 +46,10 @@ module.exports = {
 
       // Animations
       animation: {
-        'scale-up': 'scaleUp .25s',
-        'scale-down': 'scaleDown .25s',
-        'fade-in': 'fadeIn .25s',
-        'fade-out': 'fadeOut .25s',
+        'scale-up': 'scaleUp .35s',
+        'scale-down': 'scaleDown .35s',
+        'fade-in': 'fadeIn .35s',
+        'fade-out': 'fadeOut .35s',
       }
     },
   },
