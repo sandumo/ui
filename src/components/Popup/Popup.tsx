@@ -7,9 +7,10 @@ type PopupProps = {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
+  rootClassName?: string;
 }
 
-export default function Popup({ open, onClose, children, className }: PopupProps) {
+export default function Popup({ open, onClose, children, className, rootClassName }: PopupProps) {
   const [isOpen, setIsOpen] = useState(open);
   const [isOpen2, setIsOpen2] = useState(open);
 
@@ -19,22 +20,22 @@ export default function Popup({ open, onClose, children, className }: PopupProps
       setIsOpen2(true);
     } else {
       setIsOpen(false);
-      setTimeout(() => setIsOpen2(false), 330);
+      setTimeout(() => setIsOpen2(false), 270);
     }
   }, [open]);
 
   const handleClose = () => {
     setIsOpen(false);
-    setTimeout(() => setIsOpen2(false), 330);
-    setTimeout(() => onClose(), 330);
+    setTimeout(() => setIsOpen2(false), 270);
+    setTimeout(() => onClose(), 270);
   };
 
   if (!isOpen2) return null;
 
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 flex items-center justify-center px-4 py-safe-offset-4 h-full overflow-y-scroll" onClick={handleClose}>
+    <div className={clsx('fixed inset-0 flex items-center justify-center px-4 py-safe-offset-4 h-full overflow-y-scroll', rootClassName)} onClick={handleClose}>
       <div className={clsx('absolute top-0 left-0 w-full h-full bg-black/60 backdrop-blur-sm', isOpen ? 'animate-fade-in' : 'animate-fade-out')} />
-      <div className={clsx('max-w-[calc(100vw-2rem)] w-full z-10', isOpen ? 'animate-scale-up' : 'animate-scale-down', className)} onClick={e => e.stopPropagation()}>
+      <div className={clsx('max-w-[calc(100vw-2rem)] md:max-w-[450px] 2xl:max-w-[550px] max-h-[1200px] w-full z-10', isOpen ? 'animate-scale-up' : 'animate-scale-down', className)} onClick={e => e.stopPropagation()}>
         {children}
       </div>
     </div>,

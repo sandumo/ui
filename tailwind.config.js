@@ -16,6 +16,9 @@ module.exports = {
           main: '#418BF9',
           light: '#e8f1fe',
           dark: '#075DDF',
+        },
+        success: {
+          DEFAULT: '#1DB954',
         }
       },
 
@@ -36,10 +39,15 @@ module.exports = {
         },
         fadeIn: {
           '0%': { opacity: 0 },
+          '50%': { opacity: 1 },
           '100%': { opacity: 1 },
         },
         fadeOut: {
+          // '0%': { opacity: 1 },
+          // '100%': { opacity: 0 },
           '0%': { opacity: 1 },
+          '50%': { opacity: 1 },
+          '80%': { opacity: 0 },
           '100%': { opacity: 0 },
         },
       },
@@ -47,9 +55,9 @@ module.exports = {
       // Animations
       animation: {
         'scale-up': 'scaleUp .35s',
-        'scale-down': 'scaleDown .35s',
+        'scale-down': 'scaleDown .3s',
         'fade-in': 'fadeIn .35s',
-        'fade-out': 'fadeOut .35s',
+        'fade-out': 'fadeOut .3s',
       }
     },
   },

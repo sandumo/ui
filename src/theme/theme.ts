@@ -79,7 +79,7 @@ let theme = createTheme({
   //   },
 
   typography: {
-    // fontFamily: inter.style?.fontFamily,
+    fontFamily: 'Inter, sans-serif',
     // fontFamily: geistSans.style?.fontFamily,
     // fontFamily: GeistSans.style?.fontFamily,
   },

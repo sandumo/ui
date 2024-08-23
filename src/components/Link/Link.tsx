@@ -9,9 +9,10 @@ interface LinkProps {
   sx?: SxProps;
   className?: string; // It's especially used for PopupMenu link items
   primary?: boolean;
+  onClick?: () => void;
 }
 
-export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '' }: LinkProps) {
+export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick }: LinkProps) {
   return (
     <Box
       component={NextLink}
@@ -34,6 +35,7 @@ export default function Link({ children, href, sx, className, primary = false, t
       rel={rel}
       href={href}
       {...(className ? { className } : {})}
+      onClick={onClick}
     >
       {children}
     </Box>

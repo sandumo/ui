@@ -13,7 +13,7 @@ export { default as ArrowBackIosIcon } from '@mui/icons-material/ArrowBackIosNew
 export { default as ArrowForwardIosIcon } from '@mui/icons-material/ArrowForwardIosRounded';
 export { default as ArrowBackIcon } from '@mui/icons-material/ArrowBackRounded';
 export { default as ArrowForwardIcon } from '@mui/icons-material/ArrowForwardRounded';
-export { default as CheckCircleIcon } from '@mui/icons-material/CheckCircleRounded';
+// export { default as CheckCircleIcon } from '@mui/icons-material/CheckCircleRounded';
 export { default as RemoveCircleIcon } from '@mui/icons-material/RemoveCircleRounded';
 export { default as RemoveIcon } from '@mui/icons-material/RemoveRounded';
 export { default as PhoneIcon } from '@mui/icons-material/LocalPhoneRounded';
@@ -24,3 +24,5 @@ export { default as MinusIcon } from '@mui/icons-material/RemoveRounded';
 export { default as AddImageIcon } from './AddImage';
 export { default as CartIcon } from './Cart';
 export { default as ShoppingBagIcon } from './ShoppingBag';
+export { default as CheckCircleIcon } from './CheckCircle';
+export { default as ShoppingBagAddIcon } from './ShoppingBagAdd';

@@ -129,7 +129,7 @@ type AutocompleteProps<T> = {
   label?: string;
   placeholder?: string;
   size?: 'small' | 'medium';
-  value?: NonNullable<T> | undefined;
+  value?: NonNullable<T> | NonNullable<T>[] | undefined;
   defaultValue?: NonNullable<T> | undefined;
   sx?: SxProps;
   fullWidth?: boolean;
@@ -137,13 +137,14 @@ type AutocompleteProps<T> = {
   freeSolo?: boolean;
   noOptionsText?: string;
   disableClearable?: boolean;
-  onChange?: (event: React.ChangeEvent<{}>, value: T) => void;
+  onChange?: (event: React.ChangeEvent<{}>, value: T | T[]) => void;
   renderInput?: (params: any) => React.ReactNode;
   renderOption?: (props: any, option: T, state: any) => React.ReactNode;
   getOptionLabel?: (option: T) => string;
   error?: boolean;
   helperText?: string;
   disabled?: boolean;
+  multiple?: boolean;
 } & (
   | { async: true; options?: undefined; getOptions: () => Promise<T[]>; }
   | { async?: false; options: T[]; getOptions?: undefined; }
@@ -169,13 +170,14 @@ export default function Autocomplete<T>({
   helperText,
   disabled,
   disableClearable,
+  multiple,
   ...props
 }: AutocompleteProps<T>) {
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState<T[]>([]);
   const [hasLoadedOptions, setHasLoadedOptions] = React.useState(false);
   const loading = open && options.length === 0 && !hasLoadedOptions;
-  const [internalValue, setInternalValue] = React.useState<NonNullable<T> | null>(value || defaultValue || null);
+  const [internalValue, setInternalValue] = React.useState<NonNullable<T> | NonNullable<T>[] | null>(value || defaultValue || null);
 
   const { errors } = useFormContext();
 
@@ -228,6 +230,7 @@ export default function Autocomplete<T>({
           ...sx,
         }}
 
+        multiple={multiple}
         disableClearable={disableClearable}
         disabled={disabled}
         disableListWrap
