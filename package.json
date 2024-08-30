@@ -12,6 +12,7 @@
     ".": "./src/index.tsx",
     "./icons": "./src/icons/index.tsx",
     "./components": "./src/components/index.ts",
+    "./providers": "./src/providers/index.tsx",
     "./styles": "./styles.css",
     "./tailwind": "./tailwind.config.js"
   },
@@ -22,6 +23,9 @@
       ],
       "components": [
         "./src/components/index.ts"
+      ],
+      "providers": [
+        "./src/providers/index.tsx"
       ],
       "styles": [
         "./styles.css"
@@ -68,6 +72,7 @@
     "geist": "^1.2.0",
     "next": "^13.5.6",
     "react-dom": "18.2.0",
+    "react-hot-toast": "2.4.0",
     "react-window": "^1.8.8",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "zod": "^3.21.4"

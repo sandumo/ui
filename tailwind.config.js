@@ -19,6 +19,9 @@ module.exports = {
         },
         success: {
           DEFAULT: '#1DB954',
+        },
+        error: {
+          DEFAULT: '#F94141',
         }
       },
 
