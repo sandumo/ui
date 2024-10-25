@@ -13,6 +13,7 @@ type ImageSliderProps<T> = {
   zoomInAnimation?: boolean;
   arrows?: boolean;
   desktopArrows?: boolean;
+  keyControls?: boolean;
 }
 
 export default function ImageGallery<T>({
@@ -23,6 +24,7 @@ export default function ImageGallery<T>({
   arrows,
   zoomInAnimation = true,
   desktopArrows = false,
+  keyControls = false,
 }: ImageSliderProps<T>) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -69,6 +71,24 @@ export default function ImageGallery<T>({
 
     return () => clearTimeout(timeout);
   }, [open]);
+
+  useEffect(() => {
+    if (!keyControls) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight') {
+        next(event);
+      } else if (event.key === 'ArrowLeft') {
+        prev(event);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentIndex, keyControls]);
 
   const next = (e: any) => {
     e.stopPropagation();
