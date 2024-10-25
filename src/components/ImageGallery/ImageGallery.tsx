@@ -70,6 +70,22 @@ export default function ImageGallery<T>({
     return () => clearTimeout(timeout);
   }, [open]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight') {
+        next(event);
+      } else if (event.key === 'ArrowLeft') {
+        prev(event);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentIndex]);
+
   const next = (e: any) => {
     e.stopPropagation();
 
