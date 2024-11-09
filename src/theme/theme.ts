@@ -88,8 +88,8 @@ let theme = createTheme({
 
   typography: {
     // fontFamily: 'Onest, sans-serif',
-    // fontFamily: geistSans.style?.fontFamily,
-    fontFamily: onestFont.style?.fontFamily,
+    // fontFamily: onestFont.style?.fontFamily,
+    fontFamily: '"Onest", sans-serif',
   },
 });
 

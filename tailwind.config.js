@@ -9,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Fonts
+      fontFamily: {
+        sans: ['Onest', 'sans-serif'],
+      },
+
       // Colors
       colors: {
         primary: {
