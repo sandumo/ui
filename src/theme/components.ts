@@ -18,11 +18,11 @@ export default function (theme: Theme): ThemeOptions['components'] {
           style: {
             backgroundColor: (theme.palette as any)[color].light,
             color: (theme.palette as any)[color].main,
-            ...theme.unstable_sx({
-              '&:hover': {
-                bgcolor: Color((theme.palette as any)[color].light).darken(.025).hex(),
-              },
-            }),
+            // ...theme.sx({
+            //   '&:hover': {
+            //     bgcolor: Color((theme.palette as any)[color].light).darken(.025).hex(),
+            //   },
+            // }),
           },
         })) as { props: Partial<ButtonProps>; style: Interpolation<{ theme: Theme }> }[],
       ],
@@ -135,7 +135,7 @@ export default function (theme: Theme): ThemeOptions['components'] {
 
     MuiSelect: {
       styleOverrides: {
-        select: theme.unstable_sx({
+        select: {
           // paddingTop: '13px!important',
           // paddingBottom: '13px!important',
           // lineHeight: '22px',
@@ -144,7 +144,7 @@ export default function (theme: Theme): ThemeOptions['components'] {
           '& .notranslate::after': {
             color: '#00000040',
           },
-        }),
+        },
       },
     },
 
