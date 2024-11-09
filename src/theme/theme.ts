@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import components from './components';
+import { Onest } from 'next/font/google';
 
 // import { GeistMono } from 'geist/font/mono';
 
@@ -21,6 +22,13 @@ import components from './components';
 //   subsets: ['latin'],
 //   weight: ['400', '500', '600', '700', '800', '900'],
 // });
+
+const onestFont = Onest({
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['Open Sans', 'Arial', 'sans-serif'],
+});
 
 let theme = createTheme({
   // spacing: (factor: number) => `${0.25 * factor}rem`,
@@ -79,9 +87,9 @@ let theme = createTheme({
   //   },
 
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    // fontFamily: 'Onest, sans-serif',
     // fontFamily: geistSans.style?.fontFamily,
-    // fontFamily: GeistSans.style?.fontFamily,
+    fontFamily: onestFont.style?.fontFamily,
   },
 });
 

@@ -22,6 +22,7 @@ module.exports = {
         },
         error: {
           DEFAULT: '#F94141',
+          dark: '#D00707',
         }
       },
 
@@ -53,6 +54,14 @@ module.exports = {
           '80%': { opacity: 0 },
           '100%': { opacity: 0 },
         },
+        linePulse: {
+          // '0%': { transform: 'scale(1)', opacity: 1 },
+          // '75%': { transform: 'scale(2)', opacity: 0 },
+          // '100%': { transform: 'scale(2)', opacity: 0 },
+          '0%': { width: '100%', height: '100%', marginTop: '0%', marginLeft: '0%', opacity: 1 },
+          '75%': { width: '300%', height: '300%', marginTop: '-100%', marginLeft: '-100%', opacity: 0 },
+          '100%': { width: '300%', height: '300%', marginTop: '-100%', marginLeft: '-100%', opacity: 0 },
+        },
       },
 
       // Animations
@@ -61,6 +70,7 @@ module.exports = {
         'scale-down': 'scaleDown .3s',
         'fade-in': 'fadeIn .35s',
         'fade-out': 'fadeOut .3s',
+        'line-pulse': 'linePulse 2s infinite',
       }
     },
   },

@@ -23,6 +23,7 @@ export { default as ZoomInSheet } from './ZoomInSheet';
 export { default as ImageGallery } from './ImageGallery';
 export { default as Dialog } from './Dialog';
 export { default as Popup } from './Popup';
+export { default as Slider } from './Slider';
 
 export {
   Box,
