@@ -55,33 +55,37 @@ export default function Form<FormData extends Record<string, any>>({
       className={className}
       method="post"
       encType={encType}
-      onSubmit={handleSubmit(async (data: FormData) => {
+      onSubmit={(e) => {
+        e.preventDefault();
 
-        if (getValidationSchema) {
-          const schema = zod.object(getValidationSchema?.(zod) || {});
-          const err = schema.safeParse(data);
+        handleSubmit(async (data: FormData) => {
 
-          const indexedErrors: Record<string, any> = {};
+          if (getValidationSchema) {
+            const schema = zod.object(getValidationSchema?.(zod) || {});
+            const err = schema.safeParse(data);
 
-          if (!err.success) {
-            for (const error of err.error.errors) {
-              const pathKey = error.path.join('.');
-              indexedErrors[pathKey] = error.message;
+            const indexedErrors: Record<string, any> = {};
+
+            if (!err.success) {
+              for (const error of err.error.errors) {
+                const pathKey = error.path.join('.');
+                indexedErrors[pathKey] = error.message;
+              }
+
+              setErrors(indexedErrors);
+
+              return;
             }
 
             setErrors(indexedErrors);
-
-            return;
           }
 
-          setErrors(indexedErrors);
-        }
-
-        setPending(true);
-        const errors = await onSubmit?.(data);
-        setErrors((errors || {}) as Record<string, string>);
-        setPending(false);
-      })}
+          setPending(true);
+          const errors = await onSubmit?.(data);
+          setErrors((errors || {}) as Record<string, string>);
+          setPending(false);
+        })(e);
+      }}
     >
       {typeof children === 'function' ? children({ errors: errors as ErrorsType<FormData>, pending }) : children}
     </Box>
