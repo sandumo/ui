@@ -1,23 +1,26 @@
-import { Container as MuiContainer, SxProps } from '@mui/material';
+import clsx from 'clsx';
 
 type ContainerProps = {
-  children: React.ReactNode;
-  sx?: SxProps;
+  children?: React.ReactNode;
+  // sx?: SxProps;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default function Container({ children, sx, className }: ContainerProps) {
+export default function Container({ children, className, style }: ContainerProps) {
   return (
-    <MuiContainer sx={{
-      px: {
-        xs: '1rem!important',
-        sm: '2rem!important',
-      },
-      ...sx,
-    }}
-    className={className}
+    <div className={clsx('max-w-[1200px] mx-auto px-4 sm:px-6', className)}
+      style={style}
+    // sx={{
+    //   px: {
+    //     xs: '1rem!important',
+    //     sm: '2rem!important',
+    //   },
+    //   ...sx,
+    // }}
+    // className={className}
     >
       {children}
-    </MuiContainer>
+    </div>
   );
 }

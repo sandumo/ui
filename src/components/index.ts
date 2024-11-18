@@ -24,6 +24,8 @@ export { default as ImageGallery } from './ImageGallery';
 export { default as Dialog } from './Dialog';
 export { default as Popup } from './Popup';
 export { default as Slider } from './Slider';
+export { default as Divider } from './Divider';
+export { default as LoadingDots } from './LoadingDots';
 
 export {
   Box,

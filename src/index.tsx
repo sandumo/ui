@@ -11,3 +11,9 @@ export { createEmotionCache, getEmotionCacheInitialProps } from './theme/emotion
 
 export { default as toast, Toaster } from 'react-hot-toast';
 
+import type { Theme } from './providers/Theme/theme';
+import type { DeepPartial } from './providers/Theme/theme';
+
+type DeepPartialTheme = DeepPartial<Theme>;
+
+export type { Theme, DeepPartialTheme };

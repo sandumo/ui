@@ -9,6 +9,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '2rem',
+          xl: '2rem',
+          '2xl': '2rem',
+        },
+        
+      },
+
       // Fonts
       fontFamily: {
         sans: ['Onest', 'sans-serif'],
@@ -28,7 +40,11 @@ module.exports = {
         error: {
           DEFAULT: '#F94141',
           dark: '#D00707',
-        }
+        },
+
+        divider: {
+          DEFAULT: '#E9E9E9',
+        },
       },
 
 
@@ -67,6 +83,10 @@ module.exports = {
           '75%': { width: '300%', height: '300%', marginTop: '-100%', marginLeft: '-100%', opacity: 0 },
           '100%': { width: '300%', height: '300%', marginTop: '-100%', marginLeft: '-100%', opacity: 0 },
         },
+        'dot-pulse': {
+          '0%, 80%, 100%': { opacity: 0.3 },
+          '40%': { opacity: 1 },
+        },
       },
 
       // Animations
@@ -76,6 +96,7 @@ module.exports = {
         'fade-in': 'fadeIn .35s',
         'fade-out': 'fadeOut .3s',
         'line-pulse': 'linePulse 2s infinite',
+        'dot-pulse': 'dot-pulse 1.2s infinite ease-in-out both',
       }
     },
   },

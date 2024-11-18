@@ -36,6 +36,7 @@ export default function Link({ children, href, sx, className, primary = false, t
       href={href}
       {...(className ? { className } : {})}
       onClick={onClick}
+      target={target}
     >
       {children}
     </Box>

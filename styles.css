@@ -4,12 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apply the font globally */
-/* @layer base {
-  html {
-    @apply font-sans;
-  }
-} */
+.btn-hover {
+  /* @apply relative overflow-hidden after:content-[""] after:bg-black/0 after:hover:bg-black/10 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:duration-75; */
+  @apply relative overflow-hidden before:content-[""] before:bg-black/0 before:hover:bg-black/10 before:w-full before:h-full before:absolute before:top-0 before:left-0 before:duration-75;
+}
+
+.btn-hover-1 {
+  @apply bg-black/0 hover:bg-black/10 absolute w-full h-full top-0 left-0 duration-75;
+}
+
 
 body {
   overflow-x: visible;

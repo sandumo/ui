@@ -1,10 +1,19 @@
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from './Theme/ThemeProvider';
+import { DeepPartialTheme } from './Theme/theme';
 
-export default function UIProvider({ children }: { children: React.ReactNode }) {
+type UIProviderProps = {
+  children: React.ReactNode;
+  theme?: DeepPartialTheme;
+}
+
+export default function UIProvider({ children, theme }: UIProviderProps) {
   return (
     <>
       <Toaster />
-      {children}
+      <ThemeProvider theme={theme}>
+        {children}
+      </ThemeProvider>
     </>
   );
 }
