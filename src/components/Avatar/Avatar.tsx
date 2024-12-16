@@ -15,7 +15,7 @@ const nameAbbreviation = (name: string) => {
 type AvatarProps = {
   src?: string;
   name?: string;
-  size?: 'small' | 'medium' | 'large' | 'extraLarge';
+  size?: 'small' | 'medium' | 'large' | 'extraLarge' | number;
   sizes?: string;
   variant?: 'circle' | 'rounded' | 'square';
   sx?: SxProps;
@@ -51,8 +51,8 @@ export default function Avatar({
       {...props}
       sx={{
         position: 'relative',
-        width: size === 'small' ? 30 : size === 'medium' ? 40 : size === 'large' ? 50 : 100,
-        height: size === 'small' ? 30 : size === 'medium' ? 40 : size === 'large' ? 50 : 100,
+        width: size === 'small' ? 30 : size === 'medium' ? 40 : size === 'large' ? 50 : size === 'extraLarge' ? 100 : size,
+        height: size === 'small' ? 30 : size === 'medium' ? 40 : size === 'large' ? 50 : size === 'extraLarge' ? 100 : size,
         borderRadius: variant === 'circle' ? '50%' : variant === 'rounded' ? 1 : 0,
         overflow: 'hidden',
         display: 'flex',
@@ -60,7 +60,7 @@ export default function Avatar({
         justifyContent: 'center',
         textTransform: 'uppercase',
         fontWeight: 800,
-        fontSize: size === 'small' ? 12 : size === 'medium' ? 16 : size === 'large' ? 18 : 50,
+        fontSize: size === 'small' ? 12 : size === 'medium' ? 16 : size === 'large' ? 18 : size ? ((size as number) * 0.4) : 50,
         backgroundColor: theme => `${theme.palette.primary.main}15`,
         color: 'primary.main',
         ...sx,

@@ -51,3 +51,10 @@ module.exports = {
   },
 };
 ```
+
+
+Add following line to your `_app.tsx` file
+
+```tsx
+import '@sandumo/ui/styles.css';
+```
