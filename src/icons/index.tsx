@@ -20,6 +20,8 @@ export { default as PhoneIcon } from '@mui/icons-material/LocalPhoneRounded';
 export { default as EmailIcon } from '@mui/icons-material/AlternateEmailRounded';
 export { default as LocationIcon } from '@mui/icons-material/FmdGoodRounded';
 export { default as MinusIcon } from '@mui/icons-material/RemoveRounded';
+export { default as SyncIcon } from '@mui/icons-material/SyncRounded';
+export { default as LaunchIcon } from '@mui/icons-material/LaunchRounded';
 
 export { default as AddImageIcon } from './AddImage';
 export { default as CartIcon } from './Cart';
