@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import TextField from '../TextField';
+import TextField from '@components/TextField';
 import { DatePickerProps as MuiDatePickerProps, DatePicker as MuiDatePicker } from '@mui/x-date-pickers/DatePicker';
 import { SxProps } from '@mui/material';
 import datetime, { Datetime } from '@sandumo/datetime';
@@ -31,6 +31,8 @@ export default function DatePicker<TInputDate, TDate>({
 
   const [value, setValue] = useState<Datetime | null>(defaultValue);
 
+  // console.log('[x] value', props.value, value, defaultValue);
+
   return (
     <>
       <input type="hidden" name={name} value={value?.toDateFormat()} />
@@ -38,7 +40,8 @@ export default function DatePicker<TInputDate, TDate>({
         label={label}
         value={value?.toDateFormat()}
         inputFormat="YYYY-MM-DD"
-        onChange={(value) => setValue(datetime(value))}
+        onChange={(value) => { setValue(datetime(value)); props.onChange?.(datetime(value) as any); }}
+
         renderInput={(params) => (
           <TextField
             {...params}
@@ -49,7 +52,12 @@ export default function DatePicker<TInputDate, TDate>({
 
             // {...props}
             // name={name}
-            sx={sx}
+            sx={{
+              '& .MuiFormControl-root': {
+                height: '48px!important',
+              },
+              ...sx,
+            }}
           />
         )}
       />
