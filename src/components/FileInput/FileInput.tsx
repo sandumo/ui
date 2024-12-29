@@ -76,9 +76,9 @@ export default function FileInput({
             setFiles(Array.from(e.target.files));
 
             if (multiple) {
-              onChange?.(Array.from(e.target.files));
+              onChange?.(Array.from(e.target.files) as File[] & File);
             } else {
-              onChange?.(e.target.files?.[0]);
+              onChange?.(e.target.files?.[0] as File[] & File);
             }
           }
         }}

@@ -83,21 +83,21 @@ export default function Dialog<T extends Record<string, any>>({
       </DialogContent>
       {hideControls ? null : (
         <DialogActions>
-          <Button sx={{ fontSize: 16, px: '24px!important' }} variant="text" color="error" onClick={onClose}>{closeButtonLabel}</Button>
+          <Button className="text-md !px-[24px]" color="error" onClick={onClose}>{closeButtonLabel}</Button>
           <Button
-
+            className="text-md !px-[24px]"
             // size="small"
-            sx={{
-              // height: 36,
-              fontSize: 16,
+            // sx={{
+            //   // height: 36,
+            //   fontSize: 16,
 
-              // fontWeight: 500,
-              px: '24px!important',
-              boxShadow: 0,
-              '&:hover': {
-                boxShadow: 0,
-              },
-            }}
+            //   // fontWeight: 500,
+            //   px: '24px!important',
+            //   boxShadow: 0,
+            //   '&:hover': {
+            //     boxShadow: 0,
+            //   },
+            // }}
 
             // variant="contained"
             {...(onSubmit ? {

@@ -17,7 +17,7 @@ function renderRow(props: ListChildComponentProps) {
   const dataSet = data[index];
   const inlineStyle = {
     ...style,
-    top: (style.top as number) + LISTBOX_PADDING,
+    top: ((style as any).top as number) + LISTBOX_PADDING,
   };
 
   if (dataSet.hasOwnProperty('group')) {
@@ -37,6 +37,7 @@ function renderRow(props: ListChildComponentProps) {
 
 const OuterElementContext = React.createContext<Omit<React.HTMLAttributes<HTMLElement>, 'children'>>({});
 
+// eslint-disable-next-line react/display-name
 const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => {
   const outerProps = React.useContext(OuterElementContext);
 

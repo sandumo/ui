@@ -7,6 +7,8 @@ export type Theme = {
         default: string,
         primary: string,
         secondary: string,
+        success: string,
+        error: string,
       },
       size: {
         xs: string,
@@ -43,16 +45,18 @@ export const theme: Theme = {
   components: {
     Button: {
       wrapper: 'rounded-md font-semibold duration-75 overflow-hidden inline-flex relative',
-      root: 'px-4 py-2 flex items-center gap-1 hover:bg-black/10',
+      root: 'flex items-center gap-1 hover:bg-black/10 w-full flex justify-center items-center',
       color: {
         default: 'hover:bg-black/10',
         primary: 'bg-primary-dark text-white',
         secondary: 'bg-purple-500 hover:bg-purple-500/80 text-white',
+        success: 'bg-green-100 text-green-600 border-[.5px] border-green-300',
+        error: 'bg-red-600 text-white',
       },
       size: {
         xs: '',
-        sm: '',
-        md: '',
+        sm: 'px-3 py-1',
+        md: 'px-4 py-2',
         lg: '',
         xl: '',
       },

@@ -38,6 +38,8 @@ export default function ButtonNew({
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
+    if (!onClick) return;
+
     if (isPromise(onClick)) {
       setLoading(true);
       await onClick?.();
@@ -48,15 +50,15 @@ export default function ButtonNew({
   };
 
   return (
-    <DynamicButton className={twMerge(styles.wrapper, styles.color[color], styles.size[size], fullWidth && 'w-full', className)} onClick={handleClick} {...props}>
-      <div className={twMerge(styles.root, styles.color[color], loading && 'opacity-0')}>
+    <DynamicButton className={twMerge(styles.wrapper, styles.color[color], fullWidth && 'w-full', className)} onClick={handleClick} {...props}>
+      <div className={twMerge(styles.root, styles.size[size], loading && 'opacity-0')}>
         {startIcon && <div className={clsx('flex items-center *:!-ml-1', styles.icon[size])}>{startIcon}</div>}
         <span className={clsx(styles.text[size])}>{children}</span>
         {endIcon && <div className={clsx('flex items-center *:!-mr-1', styles.icon[size])}>{endIcon}</div>}
       </div>
 
       {loading && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none">
+        <div className={twMerge('absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none', twPickTextColor(styles.color[color]))}>
           <LoadingDots />
         </div>
       )}
@@ -74,4 +76,9 @@ function DynamicButton({ children, href, ...props }: ButtonProps) {
 
 function isPromise(fn: any) {
   return fn.constructor.name === 'AsyncFunction';
+}
+
+function twPickTextColor(className: string) {
+  const textColor = className.split(' ').find((c) => c.startsWith('text-'));
+  return textColor ? textColor.split('-')[1] : 'white';
 }

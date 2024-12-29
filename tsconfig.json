@@ -18,10 +18,11 @@
     "strict": true,
     "sourceMap": true,
     "jsx": "react-jsx",
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ES2020", "DOM"],
     "module": "ESNext",
     "target": "es6",
     "baseUrl": ".",
+    "outDir": "./dist",
     "paths": {
       "@*": ["src/*"],
       "react": ["./node_modules/@types/react"]

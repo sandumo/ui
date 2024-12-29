@@ -55,7 +55,7 @@ export default function Form<FormData extends Record<string, any>>({
       className={className}
       method="post"
       encType={encType}
-      onSubmit={(e) => {
+      onSubmit={(e: any) => {
         e.preventDefault();
 
         handleSubmit(async (data: FormData) => {
