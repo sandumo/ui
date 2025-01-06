@@ -1,8 +1,12 @@
 import { twMerge } from 'tailwind-merge';
 
-export default function LoadingDots() {
+type LoadingDotsProps = {
+  className?: string;
+};
+
+export default function LoadingDots({ className }: LoadingDotsProps) {
   return (
-    <div className="flex items-center justify-center gap-1">
+    <div className={twMerge('flex items-center justify-center gap-1', className)}>
       <Dot className="[animation-delay:0s]" />
       <Dot className="[animation-delay:0.3s]" />
       <Dot className="[animation-delay:0.6s]" />
