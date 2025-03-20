@@ -1,9 +1,9 @@
 // import { TypographyProps } from '@mui/material';
 // import MuiTypography from '@mui/material/Typography';
 
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 
-import { SxProps } from "@mui/material";
+import { SxProps } from '@mui/material';
 
 type TypographyProps = {
   children: React.ReactNode,
