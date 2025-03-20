@@ -6,6 +6,7 @@ type IconButtonProps = MuiIconButtonProps & {
   href?: string;
   onClick?: (e: any) => Promise<any> | any;
   stopPropagation?: boolean;
+  download?: boolean;
 }
 
 export default function IconButton({
