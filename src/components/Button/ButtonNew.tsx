@@ -5,10 +5,12 @@ import { useThemeContext } from '../../providers/Theme/ThemeProvider';
 import { Theme } from '../../providers/Theme/theme';
 import NextLink from 'next/link';
 import LoadingDots from '../LoadingDots';
+import { useFormContext } from '../Form';
 
 type ButtonProps = {
   children: React.ReactNode,
   className?: string,
+  variant?: keyof Theme['components']['Button']['variant'],
   color?: keyof Theme['components']['Button']['color'],
   size?: keyof Theme['components']['Button']['size'],
   fullWidth?: boolean,
@@ -19,10 +21,13 @@ type ButtonProps = {
 
   endIcon?: React.ReactNode,
   startIcon?: React.ReactNode,
+
+  submit?: boolean,
 }
 
 export default function ButtonNew({
   children,
+  variant = 'default',
   color = 'default',
   size = 'md',
   className,
@@ -31,11 +36,14 @@ export default function ButtonNew({
   onClick,
   endIcon,
   startIcon,
+  submit = false,
   ...props
 }: ButtonProps) {
   const styles = useThemeContext().theme.components.Button;
 
   const [loading, setLoading] = useState(false);
+
+  const { pending } = useFormContext();
 
   const handleClick = async () => {
     if (!onClick) return;
@@ -50,14 +58,14 @@ export default function ButtonNew({
   };
 
   return (
-    <DynamicButton className={twMerge(styles.wrapper, styles.color[color], fullWidth && 'w-full', className)} onClick={handleClick} {...props}>
-      <div className={twMerge(styles.root, styles.size[size], loading && 'opacity-0')}>
+    <DynamicButton className={twMerge(styles.wrapper, styles.variant[variant][color], styles.size[size], fullWidth && 'w-full', className)} onClick={handleClick} {...props}>
+      <div className={twMerge(styles.root, 'w-full', (loading || pending) && 'opacity-0')}>
         {startIcon && <div className={clsx('flex items-center *:!-ml-1', styles.icon[size])}>{startIcon}</div>}
-        <span className={clsx(styles.text[size])}>{children}</span>
+        <div className={clsx(styles.text[size], 'w-full text-center', 'text-nowrap')}>{children}</div>
         {endIcon && <div className={clsx('flex items-center *:!-mr-1', styles.icon[size])}>{endIcon}</div>}
       </div>
 
-      {loading && (
+      {(loading || pending) && (
         <div className={twMerge('absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none', twPickTextColor(styles.color[color]))}>
           <LoadingDots />
         </div>
@@ -66,12 +74,12 @@ export default function ButtonNew({
   );
 }
 
-function DynamicButton({ children, href, ...props }: ButtonProps) {
+function DynamicButton({ children, href, submit, ...props }: ButtonProps) {
   if (href) {
     return <NextLink href={href} {...props}>{children}</NextLink>;
   }
 
-  return <button {...props}>{children}</button>;
+  return <button type={submit ? 'submit' : 'button'} {...props}>{children}</button>;
 }
 
 function isPromise(fn: any) {

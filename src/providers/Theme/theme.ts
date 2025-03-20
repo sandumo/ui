@@ -1,8 +1,14 @@
+export type Color = 'default' | 'primary' | 'secondary' | 'success' | 'error';
+
 export type Theme = {
   components: {
     Button: {
       wrapper: string,
       root: string,
+      variant: {
+        default: Partial<Record<Color, string>>,
+        outline: Partial<Record<Color, string>>,
+      },
       color: {
         default: string,
         primary: string,
@@ -44,26 +50,42 @@ export type DeepPartialTheme = DeepPartial<Theme>;
 export const theme: Theme = {
   components: {
     Button: {
-      wrapper: 'rounded-md font-semibold duration-75 overflow-hidden inline-flex relative',
-      root: 'flex items-center gap-1 hover:bg-black/10 w-full flex justify-center items-center',
+      wrapper: 'rounded-md font-semibold duration-75 overflow-hidden block relative',
+      root: 'flex justify-center items-center gap-1 w-full h-full',
+      variant: {
+        default: {
+          default: '',
+          primary: 'bg-primary text-white hover:bg-primary-dark',
+          secondary: 'bg-purple-500 hover:bg-purple-500/80 text-white',
+          success: 'bg-green-100 text-green-600 border-[.5px] border-green-300',
+          error: 'bg-red-600 text-white',
+        },
+        outline: {
+          default: 'border border-divider',
+          primary: 'text-primary border border-primary hover:bg-primary/10',
+          secondary: 'bg-purple-500 hover:bg-purple-500/80 text-white',
+          success: 'bg-green-100 text-green-600 border-[.5px] border-green-300',
+          error: 'bg-red-600 text-white',
+        },
+      },
       color: {
-        default: 'hover:bg-black/10',
-        primary: 'bg-primary-dark text-white',
+        default: '',
+        primary: 'bg-primary text-white',
         secondary: 'bg-purple-500 hover:bg-purple-500/80 text-white',
         success: 'bg-green-100 text-green-600 border-[.5px] border-green-300',
         error: 'bg-red-600 text-white',
       },
       size: {
         xs: '',
-        sm: 'px-3 py-1',
-        md: 'px-4 py-2',
+        sm: 'px-3 h-10 sm:h-9',
+        md: 'px-6 h-12 sm:h-11',
         lg: '',
         xl: '',
       },
       text: {
         xs: 'text-xs',
         sm: 'text-sm',
-        md: '',
+        md: 'text-md',
         lg: 'text-lg',
         xl: 'text-xl',
       },

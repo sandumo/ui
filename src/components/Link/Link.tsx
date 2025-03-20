@@ -1,5 +1,6 @@
 import { Box, SxProps } from '@mui/material';
 import NextLink from 'next/link';
+import { twMerge } from 'tailwind-merge';
 
 interface LinkProps {
   children: React.ReactNode;
@@ -28,13 +29,14 @@ export default function Link({ children, href, sx, className, primary = false, t
       // }}
       sx={{
         textDecoration: 'none',
-        color: primary ? 'primary.main' : 'inherit',
+        // color: primary ? 'primary.main' : 'inherit',
         ...(sx ? sx : {}),
       }}
 
       rel={rel}
       href={href}
       {...(className ? { className } : {})}
+      className={twMerge('hover:text-primary', className)}
       onClick={onClick}
       target={target}
     >
