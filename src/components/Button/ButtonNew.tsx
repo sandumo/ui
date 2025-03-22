@@ -36,7 +36,6 @@ export default function ButtonNew({
   onClick,
   endIcon,
   startIcon,
-  submit = false,
   ...props
 }: ButtonProps) {
   const styles = useThemeContext().theme.components.Button;
@@ -57,15 +56,17 @@ export default function ButtonNew({
     }
   };
 
+  const isLoading = loading || (pending && props.submit);
+
   return (
     <DynamicButton className={twMerge(styles.wrapper, styles.variant[variant][color], styles.size[size], fullWidth && 'w-full', className)} onClick={handleClick} {...props}>
-      <div className={twMerge(styles.root, 'w-full', (loading || pending) && 'opacity-0')}>
+      <div className={twMerge(styles.root, 'w-full', isLoading && 'opacity-0')}>
         {startIcon && <div className={clsx('flex items-center *:!-ml-1', styles.icon[size])}>{startIcon}</div>}
         <div className={clsx(styles.text[size], 'w-full text-center', 'text-nowrap')}>{children}</div>
         {endIcon && <div className={clsx('flex items-center *:!-mr-1', styles.icon[size])}>{endIcon}</div>}
       </div>
 
-      {(loading || pending) && (
+      {isLoading && (
         <div className={twMerge('absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none', twPickTextColor(styles.color[color]))}>
           <LoadingDots />
         </div>
@@ -74,7 +75,7 @@ export default function ButtonNew({
   );
 }
 
-function DynamicButton({ children, href, submit, ...props }: ButtonProps) {
+function DynamicButton({ children, href, submit = false, ...props }: ButtonProps) {
   if (href) {
     return <NextLink href={href} {...props}>{children}</NextLink>;
   }
