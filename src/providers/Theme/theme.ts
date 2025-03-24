@@ -8,6 +8,7 @@ export type Theme = {
       variant: {
         default: Partial<Record<Color, string>>,
         outline: Partial<Record<Color, string>>,
+        text: Partial<Record<Color, string>>,
       },
       color: {
         default: string,
@@ -60,12 +61,19 @@ export const theme: Theme = {
           success: 'bg-green-100 text-green-600 border-[.5px] border-green-300',
           error: 'bg-red-600 text-white',
         },
+        text: {
+          default: '',
+          primary: 'text-primary',
+          secondary: 'text-purple-500',
+          success: 'text-green-600',
+          error: 'text-red-600',
+        },
         outline: {
           default: 'border border-divider',
           primary: 'text-primary border border-primary hover:bg-primary/10',
           secondary: 'bg-purple-500 hover:bg-purple-500/80 text-white',
           success: 'bg-green-100 text-green-600 border-[.5px] border-green-300',
-          error: 'bg-red-600 text-white',
+          error: 'text-red-600 border border-red-600 hover:bg-red-600/10',
         },
       },
       color: {
@@ -76,7 +84,7 @@ export const theme: Theme = {
         error: 'bg-red-600 text-white',
       },
       size: {
-        xs: '',
+        xs: 'px-2 h-8 sm:h-7',
         sm: 'px-3 h-10 sm:h-9',
         md: 'px-6 h-12 sm:h-11',
         lg: '',
