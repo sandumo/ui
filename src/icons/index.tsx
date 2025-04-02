@@ -23,6 +23,8 @@ export { default as MinusIcon } from '@mui/icons-material/RemoveRounded';
 export { default as SyncIcon } from '@mui/icons-material/SyncRounded';
 export { default as LaunchIcon } from '@mui/icons-material/LaunchRounded';
 
+export { default as InsertLinkIcon } from '@mui/icons-material/InsertLinkRounded';
+
 export { default as AddImageIcon } from './AddImage';
 export { default as CartIcon } from './Cart';
 export { default as ShoppingBagIcon } from './ShoppingBag';

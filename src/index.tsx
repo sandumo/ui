@@ -17,3 +17,5 @@ import type { DeepPartial } from './providers/Theme/theme';
 type DeepPartialTheme = DeepPartial<Theme>;
 
 export type { Theme, DeepPartialTheme };
+
+export { twMerge } from 'tailwind-merge';

@@ -10,7 +10,7 @@ interface LinkProps {
   sx?: SxProps;
   className?: string; // It's especially used for PopupMenu link items
   primary?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick }: LinkProps) {
