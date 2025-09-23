@@ -7,6 +7,7 @@ type IconButtonProps = MuiIconButtonProps & {
   onClick?: (e: any) => Promise<any> | any;
   stopPropagation?: boolean;
   download?: boolean;
+  target?: string;
 }
 
 export default function IconButton({
@@ -15,6 +16,7 @@ export default function IconButton({
   onClick,
   sx,
   stopPropagation,
+  target, // not working for some reason
   disabled,
   ...props
 }: IconButtonProps) {
@@ -25,6 +27,7 @@ export default function IconButton({
       {...(href && {
         href: href,
         component: NextLink,
+        target: target,
         ...(stopPropagation && !onClick && {
           onClick: (e: any) => {
             e.stopPropagation();

@@ -25,6 +25,8 @@ export { default as LaunchIcon } from '@mui/icons-material/LaunchRounded';
 export { default as BookmarkIcon } from '@mui/icons-material/BookmarkBorderRounded';
 export { default as HistoryIcon } from '@mui/icons-material/HistoryRounded';
 export { default as KeyboardArrowLeftIcon } from '@mui/icons-material/KeyboardArrowLeftRounded';
+export { default as OpenInNewIcon } from '@mui/icons-material/OpenInNewRounded';
+export { default as SearchIcon } from '@mui/icons-material/SearchRounded';
 
 export { default as InsertLinkIcon } from '@mui/icons-material/InsertLinkRounded';
 

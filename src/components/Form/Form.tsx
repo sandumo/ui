@@ -3,6 +3,13 @@ import { handleSubmit } from '../../utils';
 import { useFormContext } from './Form.context';
 import zod from 'zod';
 
+// TODO: add support for defaultValue at the form level
+// It would take an object and based on the field name, it would set the defaultValue for that field
+
+// TODO: add support for enableSubmitOnChange
+// It would enable submitting the form when the user changes the value of a field
+// Also this should affect the submit button UI
+
 // TODO: use this when costumizing global error messages
 // const customErrorMap: zod.ZodErrorMap = (error, ctx) => {
 //   switch (error.code) {

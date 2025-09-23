@@ -15,7 +15,7 @@ git submodule update --init --recursive
 Install dependencies
 
 ```bash
-pnpm i tailwindcss autoprefixer postcss --filter web -D
+pnpm i tailwindcss autoprefixer postcss tailwindcss-safe-area --filter web -D
 ```
 
 ```js
@@ -52,9 +52,18 @@ module.exports = {
 };
 ```
 
+Add `@sandumo/ui` package to your `package.json` file
+```json
+{
+  "dependencies": {
+    "@sandumo/ui": "workspace:*"
+  }
+}
+```
 
 Add following line to your `_app.tsx` file
 
 ```tsx
 import '@sandumo/ui/styles.css';
 ```
+
