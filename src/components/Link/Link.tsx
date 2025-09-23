@@ -10,10 +10,11 @@ interface LinkProps {
   sx?: SxProps;
   className?: string; // It's especially used for PopupMenu link items
   primary?: boolean;
+  disableHover?: boolean;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick }: LinkProps) {
+export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick, disableHover = false }: LinkProps) {
   return (
     <Box
       component={NextLink}
@@ -36,7 +37,7 @@ export default function Link({ children, href, sx, className, primary = false, t
       rel={rel}
       href={href}
       {...(className ? { className } : {})}
-      className={twMerge('hover:text-primary', className)}
+      className={twMerge(disableHover ? '' : 'hover:text-primary', className)}
       onClick={onClick}
       target={target}
     >

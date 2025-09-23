@@ -22,6 +22,9 @@ export { default as LocationIcon } from '@mui/icons-material/FmdGoodRounded';
 export { default as MinusIcon } from '@mui/icons-material/RemoveRounded';
 export { default as SyncIcon } from '@mui/icons-material/SyncRounded';
 export { default as LaunchIcon } from '@mui/icons-material/LaunchRounded';
+export { default as BookmarkIcon } from '@mui/icons-material/BookmarkBorderRounded';
+export { default as HistoryIcon } from '@mui/icons-material/HistoryRounded';
+export { default as KeyboardArrowLeftIcon } from '@mui/icons-material/KeyboardArrowLeftRounded';
 
 export { default as InsertLinkIcon } from '@mui/icons-material/InsertLinkRounded';
 
@@ -34,3 +37,4 @@ export { default as UsersIcon } from './UsersIcon';
 export { default as GroupsIcon } from './GroupsIcon';
 export { default as UserIcon } from './UserIcon';
 export { default as KeyboardArrowRightIcon } from './KeyboardArrowRight';
+export { default as SearchHistoryIcon } from './SearchHistoryIcon';
