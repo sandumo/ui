@@ -30,3 +30,7 @@ export { default as CartIcon } from './Cart';
 export { default as ShoppingBagIcon } from './ShoppingBag';
 export { default as CheckCircleIcon } from './CheckCircle';
 export { default as ShoppingBagAddIcon } from './ShoppingBagAdd';
+export { default as UsersIcon } from './UsersIcon';
+export { default as GroupsIcon } from './GroupsIcon';
+export { default as UserIcon } from './UserIcon';
+export { default as KeyboardArrowRightIcon } from './KeyboardArrowRight';
