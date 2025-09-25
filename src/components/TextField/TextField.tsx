@@ -33,7 +33,7 @@ export default function TextField({
   const { errors } = useFormContext();
 
   useEffect(() => {
-    if (_value !== null && _value != value) {
+    if (_value !== undefined && _value !== null && _value != value) {
       setValue(_value);
     }
   }, [_value]);
@@ -46,7 +46,7 @@ export default function TextField({
       <MuiTextField
         ref={ref}
         value={value}
-        defaultValue={defaultValue}
+        // defaultValue={defaultValue}
         onChange={e => { setValue(e.target.value); onChange?.(e); }}
 
         {...(props.name && {
