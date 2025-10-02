@@ -1,6 +1,7 @@
 import { Box, SxProps } from '@mui/material';
 import Image from 'next/image';
 import { SyntheticEvent, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 const nameAbbreviation = (name: string) => {
   const arr = name.split(' ');
@@ -25,6 +26,7 @@ type AvatarProps = {
   onMouseEnter?: (e: SyntheticEvent) => void;
   onMouseLeave?: (e: SyntheticEvent) => void;
   ref?: any;
+  className?: string;
   [key: string]: any;
 }
 
@@ -41,6 +43,7 @@ export default function Avatar({
   onMouseEnter,
   onMouseLeave,
   ref,
+  className,
   ...props
 }: AvatarProps) {
   const [error, setError] = useState(false);
@@ -61,13 +64,14 @@ export default function Avatar({
         textTransform: 'uppercase',
         fontWeight: 800,
         fontSize: size === 'small' ? 12 : size === 'medium' ? 16 : size === 'large' ? 18 : size ? ((size as number) * 0.4) : 50,
-        backgroundColor: theme => `${theme.palette.primary.main}15`,
-        color: 'primary.main',
+        // backgroundColor: theme => `${theme.palette.primary.main}15`,
+        // color: 'primary.main',
         ...sx,
       }}
       {...(onClick ? { onClick } : {})}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      className={twMerge('bg-primary text-white', className)}
     >
       {src && !error ? (
         <Image
