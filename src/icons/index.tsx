@@ -32,6 +32,7 @@ export { default as InsertLinkIcon } from '@mui/icons-material/InsertLinkRounded
 
 export { default as ExpandLessIcon } from '@mui/icons-material/ExpandLessRounded';
 export { default as ExpandMoreIcon } from '@mui/icons-material/ExpandMoreRounded';
+export { default as MailIcon } from '@mui/icons-material/MailOutlineRounded';
 
 export { default as AddImageIcon } from './AddImage';
 export { default as CartIcon } from './Cart';

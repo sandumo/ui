@@ -4,9 +4,11 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import { useEffect, useRef, useState } from 'react';
 import Typography from '../Typography';
 import { useFormContext } from '../Form/Form.context';
+import { twMerge } from 'tailwind-merge';
 
 type TextFieldProps = {
   clearable?: boolean;
+  description?: string;
 } & MuiTextFieldProps;
 
 export default function TextField({
@@ -24,6 +26,7 @@ export default function TextField({
   onInvalid,
 
   disabled,
+  description,
 
   ...props
 }: TextFieldProps) {
@@ -41,7 +44,10 @@ export default function TextField({
   return (
     <Box sx={sx}>
       {props.label && (
-        <Typography sx={{ fontSize: 12, fontWeight: 700, mb: .5, color: disabled ? 'text.disabled' : 'text.primary' }}>{props.label}</Typography>
+        <Typography className={twMerge('text-xs font-bold', description ? 'mb-0' : 'mb-0.5')} sx={{ color: disabled ? 'text.disabled' : 'text.primary' }}>{props.label}</Typography>
+      )}
+      {description && (
+        <Typography className={twMerge('text-[11px] mb-1', disabled ? 'text-disabled' : 'text-gray-500')}>{description}</Typography>
       )}
       <MuiTextField
         ref={ref}
