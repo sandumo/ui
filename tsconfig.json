@@ -24,8 +24,7 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "paths": {
-      "@*": ["src/*"],
-      "react": ["./node_modules/@types/react"]
+      "@*": ["src/*"]
     },
     "allowSyntheticDefaultImports": true
   }
