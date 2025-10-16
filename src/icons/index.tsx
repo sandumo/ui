@@ -44,3 +44,4 @@ export { default as GroupsIcon } from './GroupsIcon';
 export { default as UserIcon } from './UserIcon';
 export { default as KeyboardArrowRightIcon } from './KeyboardArrowRight';
 export { default as SearchHistoryIcon } from './SearchHistoryIcon';
+export { default as LeftClickIcon } from './LeftClickIcon';
