@@ -154,7 +154,7 @@ export default function (theme: Theme): ThemeOptions['components'] {
           height: 'auto!important',
           '& .MuiInputBase-root': {
             // height: '40px!important', // TODO: figure out how to handle different sizes
-            maxHeight: '40px',
+            // maxHeight: '40px',
           },
           '& .MuiInputBase-multiline': {
             maxHeight: '500px',
