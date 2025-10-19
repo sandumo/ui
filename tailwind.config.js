@@ -87,6 +87,15 @@ module.exports = {
           '0%, 80%, 100%': { opacity: 0.3 },
           '40%': { opacity: 1 },
         },
+        tap: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(0.5)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        tapPing: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(2)', opacity: 0 },
+        }
       },
 
       // Animations
@@ -97,6 +106,8 @@ module.exports = {
         'fade-out': 'fadeOut .3s',
         'line-pulse': 'linePulse 2s infinite',
         'dot-pulse': 'dot-pulse 1.2s infinite ease-in-out both',
+        'tap': 'tap 1.5s infinite',
+        'tap-ping': 'tapPing 1.5s infinite',
       }
     },
   },
