@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { handleSubmit } from '../../utils';
 import { useFormContext } from './Form.context';
 import zod from 'zod';
@@ -57,8 +56,7 @@ export default function Form<FormData extends Record<string, any>>({
   const { errors, setErrors, pending, setPending } = useFormContext();
 
   return (
-    <Box
-      component="form"
+    <form
       className={className}
       method="post"
       encType={encType}
@@ -95,6 +93,6 @@ export default function Form<FormData extends Record<string, any>>({
       }}
     >
       {typeof children === 'function' ? children({ errors: errors as ErrorsType<FormData>, pending }) : children}
-    </Box>
+    </form>
   );
 }
