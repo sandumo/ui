@@ -37,7 +37,7 @@ let theme = createTheme({
     mode: 'light',
     tonalOffset: .88,
     primary: {
-      main: '#418BF9',
+      main: '#075DDF',
       // light: '#9E69FD',
       dark: '#075DDF',
     },

@@ -28,6 +28,7 @@ export { default as Divider } from './Divider';
 export { default as LoadingDots } from './LoadingDots';
 export { default as TabBar } from './TabBar';
 export * from './TabBar';
+export { default as SeekBar } from './SeekBar';
 
 export {
   Box,
