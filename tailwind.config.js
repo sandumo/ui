@@ -108,6 +108,7 @@ module.exports = {
         'dot-pulse': 'dot-pulse 1.2s infinite ease-in-out both',
         'tap': 'tap 1.5s infinite',
         'tap-ping': 'tapPing 1.5s infinite',
+        'tap-ping-2': 'tapPing 2.5s infinite',
       }
     },
   },

@@ -29,10 +29,11 @@ export { default as LoadingDots } from './LoadingDots';
 export { default as TabBar } from './TabBar';
 export * from './TabBar';
 export { default as SeekBar } from './SeekBar';
+export { default as Tooltip } from './Tooltip';
 
 export {
   Box,
   Grid,
-  Tooltip,
+  // Tooltip,
   Collapse,
 } from '@mui/material';
