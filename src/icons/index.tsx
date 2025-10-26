@@ -46,3 +46,8 @@ export { default as KeyboardArrowRightIcon } from './KeyboardArrowRight';
 export { default as SearchHistoryIcon } from './SearchHistoryIcon';
 export { default as LeftClickIcon } from './LeftClickIcon';
 export { default as TuneIcon } from './TuneIcon';
+
+export { default as DatabaseIcon } from './DatabaseIcon';
+export { default as LinkIcon } from './LinkIcon';
+export { default as LogoutIcon } from './LogoutIcon';
+export { default as HomeIcon } from './HomeIcon';
