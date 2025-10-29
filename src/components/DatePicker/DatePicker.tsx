@@ -31,8 +31,6 @@ export default function DatePicker<TInputDate, TDate>({
 
   const [value, setValue] = useState<Datetime | null>(defaultValue);
 
-  // console.log('[x] value', props.value, value, defaultValue);
-
   return (
     <>
       <input type="hidden" name={name} value={value?.toDateFormat()} />
