@@ -258,7 +258,7 @@ export default function FilePicker({ name, label, defaultValue }: FilePickerProp
           )}
 
           <FileInput name={name} multiple files={files} onChange={(files) => appendFiles(files)}>
-            {({ input, props }) => (
+            {({ pickFiles }) => (
               <Box
                 sx={{
                   width: 100,
@@ -277,10 +277,9 @@ export default function FilePicker({ name, label, defaultValue }: FilePickerProp
                   },
                 }}
 
-                {...props}
+                onClick={pickFiles}
               >
                 <AddImageIcon sx={{ color: '#00000080', fontSize: 28 }} />
-                {input}
               </Box>
             )}
           </FileInput>
