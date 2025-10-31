@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 
 type FileInputChildrenProps = {
-  props: Record<string, any>;
-  input: React.ReactNode;
+  // props: Record<string, any>;
+  // input: React.ReactNode;
   file: File | null;
   files: File[];
   reset: () => void;
+  pickFiles: () => void;
 }
 
 type FileInputProps = {
   name?: string;
-  children: ({ props, input }: FileInputChildrenProps) => JSX.Element;
+  children: (props: FileInputChildrenProps) => JSX.Element;
 } & (
   {
     multiple: true;
@@ -35,6 +36,7 @@ export default function FileInput({
   onChange,
 }: FileInputProps) {
   const ref = useRef<HTMLInputElement>(null);
+  const labelRef = useRef<HTMLLabelElement>(null);
   const [files, setFiles] = useState<File[]>(multiple ? _files : _file ? [_file] : []);
 
   const reset = () => {
@@ -57,32 +59,69 @@ export default function FileInput({
     }
   }, [_files, _file, multiple]);
 
+  return (
+    <div>
+      <label ref={labelRef}>
+        <input
+          ref={ref}
+          name={name}
+          type="file"
+          hidden
+          multiple={multiple}
+          onChange={(e) => {
+            if (e.target.files?.[0]) {
+              setFiles(Array.from(e.target.files));
+
+              if (multiple) {
+                onChange?.(Array.from(e.target.files) as File[] & File);
+              } else {
+                onChange?.(e.target.files?.[0] as File[] & File);
+              }
+            }
+          }}
+        />
+      </label>
+
+      {children({
+        pickFiles: () => {
+          labelRef.current?.click();
+        },
+        file: files[0] || null,
+        files,
+        reset,
+      })}
+    </div>
+  );
+
   return children({
-    props: {
-      component: 'label',
+    // props: {
+    //   component: 'label',
+    // },
+    pickFiles: () => {
+      labelRef.current?.click();
     },
     file: files[0] || null,
     files,
     reset,
-    input: (
-      <input
-        ref={ref}
-        name={name}
-        type="file"
-        hidden
-        multiple={multiple}
-        onChange={(e) => {
-          if (e.target.files?.[0]) {
-            setFiles(Array.from(e.target.files));
+    // input: (
+    //   <input
+    //     ref={ref}
+    //     name={name}
+    //     type="file"
+    //     hidden
+    //     multiple={multiple}
+    //     onChange={(e) => {
+    //       if (e.target.files?.[0]) {
+    //         setFiles(Array.from(e.target.files));
 
-            if (multiple) {
-              onChange?.(Array.from(e.target.files) as File[] & File);
-            } else {
-              onChange?.(e.target.files?.[0] as File[] & File);
-            }
-          }
-        }}
-      />
-    ),
+    //         if (multiple) {
+    //           onChange?.(Array.from(e.target.files) as File[] & File);
+    //         } else {
+    //           onChange?.(e.target.files?.[0] as File[] & File);
+    //         }
+    //       }
+    //     }}
+    //   />
+    // ),
   });
 }

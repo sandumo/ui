@@ -52,7 +52,7 @@ export default function DatePicker<TInputDate, TDate>({
             // name={name}
             sx={{
               '& .MuiFormControl-root': {
-                height: '48px!important',
+                height: '40px!important',
               },
               ...sx,
             }}

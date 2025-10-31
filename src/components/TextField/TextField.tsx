@@ -68,6 +68,9 @@ export default function TextField({
         sx={{
           width: '100%',
           '& > .MuiFilledInput-root': {
+            '&:hover': {
+              borderColor: '#9ca3af!important',
+            },
             height: '100%',
             borderRadius: 1,
             '&:before': {
