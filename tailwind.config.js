@@ -116,6 +116,7 @@ module.exports = {
     plugin(function ({ addVariant }) {
       addVariant('not-last', '&:not(:last-child)');
       addVariant('not-last-child', '& > *:not(:last-child)');
+      addVariant('not-first-child', '& > *:not(:first-child)');
     }),
     require('tailwindcss-safe-area'),
   ],
