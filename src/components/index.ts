@@ -30,6 +30,9 @@ export { default as TabBar } from './TabBar';
 export * from './TabBar';
 export { default as SeekBar } from './SeekBar';
 export { default as Tooltip } from './Tooltip';
+export { default as DateRangePicker } from './DateRangePicker';
+export { default as Popover } from './Popover';
+export { default as Calendar } from './Calendar';
 
 export {
   Box,
