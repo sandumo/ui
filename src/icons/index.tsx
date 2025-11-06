@@ -54,3 +54,7 @@ export { default as HomeIcon } from './HomeIcon';
 export { default as ShareIcon } from './ShareIcon';
 export { default as PdfIcon } from './PdfIcon';
 export { default as PrintIcon } from './PrintIcon';
+
+// react icons
+import { LuCalendar } from 'react-icons/lu';
+export const CalendarIcon = LuCalendar as any;

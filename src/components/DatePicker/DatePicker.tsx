@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import datetime, { Datetime } from '@sandumo/datetime';
 import { useFormContext } from '../Form/Form.context';
-import { LuCalendar } from 'react-icons/lu';
 import Calendar from '../Calendar';
 import Popover from '../Popover';
 import { twMerge } from 'tailwind-merge';
+import { CalendarIcon } from '../../icons';
 
 type DatePickerProps =  {
   name?: string;
@@ -407,7 +407,7 @@ export default function DatePicker({
         <input ref={inputRef} type="text" value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} onBlur={handleBlur} onFocus={() => setAnchorEl(ref.current)} className="bg-transparent flex-1 pl-3 pr-1 h-full outline-none" placeholder="DD.MM.YYYY" />
 
         <div className="h-8 aspect-square flex items-center justify-center mr-1 hover:bg-black/5 rounded cursor-pointer" onClick={(e) => setAnchorEl(ref.current)}>
-          <LuCalendar className="text-xl text-gray-500" />
+          <CalendarIcon className="text-xl text-gray-500" />
         </div>
       </div>
 
