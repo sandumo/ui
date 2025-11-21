@@ -3,9 +3,10 @@ import { twMerge } from 'tailwind-merge';
 type LoadingDotsProps = {
   className?: string;
   centered?: boolean;
+  label?: string;
 };
 
-export default function LoadingDots({ className, centered = false }: LoadingDotsProps) {
+export default function LoadingDots({ className, centered = false, label }: LoadingDotsProps) {
   const dots = (
     <div className={twMerge('flex items-center justify-center gap-1', className)}>
       <Dot className="[animation-delay:0s]" />
@@ -16,8 +17,9 @@ export default function LoadingDots({ className, centered = false }: LoadingDots
 
   if (centered) {
     return (
-      <div className="flex-1 flex justify-center items-center h-full w-full">
+      <div className="flex-1 flex flex-col justify-center items-center h-full w-full">
         {dots}
+        {label ? <div className="text-xs text-gray-500 mt-3">{label}</div> : null}
       </div>
     );
   }
