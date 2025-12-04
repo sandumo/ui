@@ -403,7 +403,7 @@ export default function DatePicker({
         <div className="text-xs font-bold mb-1">{label}</div>
       )}
 
-      <div className={twMerge('h-[42px] bg-[#00000006] border rounded flex items-center justify-between', error ? 'border-red-500' : 'border-[#00000010] hover:border-[#9ca3af]', className)} ref={ref}>
+      <div className={twMerge('h-[42px] bg-slate-50 border rounded flex items-center justify-between', error ? 'border-red-500' : 'border-slate-200 hover:border-[#9ca3af]', className)} ref={ref}>
         <input ref={inputRef} type="text" value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} onBlur={handleBlur} onFocus={() => setAnchorEl(ref.current)} className="bg-transparent flex-1 pl-3 pr-1 h-full outline-none" placeholder="DD.MM.YYYY" />
 
         <div className="h-8 aspect-square flex items-center justify-center mr-1 hover:bg-black/5 rounded cursor-pointer" onClick={(e) => setAnchorEl(ref.current)}>

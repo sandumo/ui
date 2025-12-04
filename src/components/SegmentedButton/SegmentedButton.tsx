@@ -37,17 +37,17 @@ export default function SegmentedButton<T>({
   return (
     <div>
       {label && <div className="text-xs font-bold mb-1">{label}</div>}
-      <div className={twMerge('h-[42px] inline-flex border border-divider rounded', className)} {...props}>
+      <div className={twMerge('h-[42px] inline-flex border border-slate-200 rounded', className)} {...props}>
         {options.map((option, index) => (
           <div
             key={getOptionValue(option)}
             onClick={() => handleChange(option)}
             className={twMerge(
-              'flex items-center justify-center font-medium h-full px-4 relative cursor-pointer flex-1 whitespace-nowrap',
+              'flex items-center justify-center font-medium h-full px-3 relative cursor-pointer flex-1 whitespace-nowrap bg-slate-50',
               index === 0 && 'rounded-l-[3px]',
               index === options.length - 1 && 'rounded-r-[3px]',
               index < options.length - 1 && 'after:content-[""] after:absolute after:right-0 after:top-0 after:bottom-0 after:w-[1px] after:bg-divider/80',
-              internalValue && getOptionValue(option) === getOptionValue(internalValue) ? 'bg-primary/10 text-primary' : 'hover:bg-slate-50',
+              internalValue && getOptionValue(option) === getOptionValue(internalValue) ? 'bg-primary/10 text-primary' : 'hover:bg-slate-100',
             )}
           >
             {getOptionLabel(option)}

@@ -13,6 +13,7 @@
  * - Required field indicator
  * - Custom option rendering via getOptionLabel/getOptionValue
  * - Smooth animations
+ * - Smart positioning (dropdown appears above if insufficient space below)
  *
  * @example
  * ```tsx
@@ -48,7 +49,7 @@ type SelectProps<T> = {
   defaultValue?: T;
   onChange?: (value: T) => void;
   getOptionLabel?: (option: T) => string;
-  getOptionValue?: (option: T) => string;
+  getOptionValue?: (option: T) => string | number;
   fullWidth?: boolean;
   placeholder?: string;
   disabled?: boolean;
@@ -76,7 +77,9 @@ export default function Select<T>({
   const [internalValue, setInternalValue] = useState<T | null>(value || defaultValue || null);
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
+  const [positionAbove, setPositionAbove] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const { errors } = useFormContext();
@@ -155,6 +158,20 @@ export default function Select<T>({
     }
   };
 
+  // Calculate dropdown position (above or below) based on available space
+  useEffect(() => {
+    if (isOpen && buttonRef.current) {
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const spaceBelow = viewportHeight - buttonRect.bottom;
+      const spaceAbove = buttonRect.top;
+      const estimatedDropdownHeight = 240; // max-h-60 = 240px
+
+      // Position above if there's not enough space below but more space above
+      setPositionAbove(spaceBelow < estimatedDropdownHeight && spaceAbove > spaceBelow);
+    }
+  }, [isOpen]);
+
   // Scroll highlighted option into view
   useEffect(() => {
     if (isOpen && highlightedIndex >= 0 && dropdownRef.current) {
@@ -222,6 +239,7 @@ export default function Select<T>({
 
       {/* Select Button */}
       <button
+        ref={buttonRef}
         type="button"
         onClick={toggleDropdown}
         onKeyDown={handleKeyDown}
@@ -237,10 +255,10 @@ export default function Select<T>({
           'focus:outline-none focus:ring-2 focus:ring-primary/20',
           hasError
             ? 'border-error focus:border-error'
-            : 'border-[#00000010] hover:border-gray-400 focus:border-primary',
+            : 'border-slate-200 hover:border-gray-400 focus:border-primary',
           disabled
             ? 'bg-gray-100 cursor-not-allowed'
-            : 'bg-[#00000006] cursor-pointer',
+            : 'bg-slate-50 cursor-pointer',
           showPlaceholder && 'text-gray-400'
         )}
       >
@@ -269,7 +287,8 @@ export default function Select<T>({
           ref={dropdownRef}
           role="listbox"
           className={clsx(
-            'absolute z-50 w-full mt-1',
+            'absolute z-50 w-full',
+            positionAbove ? 'bottom-[46px]' : 'top-full mt-1',
             'bg-white border border-gray-200 rounded-lg shadow-lg',
             'max-h-60 overflow-auto',
             'animate-fade-in'
