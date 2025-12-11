@@ -1,7 +1,9 @@
+import { useFormContext } from '../../components/Form';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type SegmentedButtonProps<T> = Omit<React.HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'> & {
+  name?: string;
   label?: string;
   options: T[];
   getOptionLabel?: (option: T) => string;
@@ -12,6 +14,7 @@ type SegmentedButtonProps<T> = Omit<React.HTMLAttributes<HTMLDivElement>, 'value
 };
 
 export default function SegmentedButton<T>({
+  name,
   label,
   options,
   getOptionLabel = option => String(option),
@@ -34,9 +37,13 @@ export default function SegmentedButton<T>({
     onChange?.(value);
   };
 
+  const { errors } = useFormContext();
+  const error = name ? errors[name] : undefined;
+
   return (
     <div>
       {label && <div className="text-xs font-bold mb-1">{label}</div>}
+      <input type="hidden" name={`${name}:json`} value={JSON.stringify(internalValue)} />
       <div className={twMerge('h-[42px] inline-flex border border-slate-200 rounded', className)} {...props}>
         {options.map((option, index) => (
           <div
@@ -54,6 +61,9 @@ export default function SegmentedButton<T>({
           </div>
         ))}
       </div>
+      {error && (
+        <div className="text-red-500 text-xs mt-1">{error}</div>
+      )}
     </div>
   );
 }
