@@ -79,7 +79,7 @@ export default function ButtonNew({
   const isLoading = loading || (pending && props.submit);
 
   return (
-    <DynamicButton className={twMerge(styles.wrapper, styles.variant[variant][color], styles.size[size], fullWidth && 'w-full', className)} onClick={handleClick} {...props}>
+    <DynamicButton className={twMerge(styles.wrapper, styles.variant[variant][color], styles.size[size], fullWidth && 'w-full', disabled && 'opacity-20 cursor-not-allowed', className)} onClick={handleClick} {...props}>
       <div className={twMerge(styles.root, 'w-full', isLoading && 'opacity-0')}>
         {startIcon && <div className={clsx('flex items-center *:!-ml-1', styles.icon[size])}>{startIcon}</div>}
         <div className={clsx(styles.text[size], 'w-full text-center', 'text-nowrap')}>{children}</div>
