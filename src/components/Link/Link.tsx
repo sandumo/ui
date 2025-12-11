@@ -1,5 +1,6 @@
 import { Box, SxProps } from '@mui/material';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { twMerge } from 'tailwind-merge';
 
 interface LinkProps {
@@ -14,23 +15,30 @@ interface LinkProps {
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
+function appendSlashIfMissing(href: string) {
+  if (href.endsWith('/')) {
+    return href;
+  }
+
+  return href + '/';
+}
+
 export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick, disableHover = false }: LinkProps) {
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(e);
+
+    if (href && appendSlashIfMissing(router.asPath) === appendSlashIfMissing(href)) {
+      router.reload();
+    }
+  };
+
   return (
     <Box
       component={NextLink}
-
-      // onClick={(e: any) => {
-      //   // e.preventDefault();
-
-      //   if (target == '_blank') {
-      //     window.open(href, '_blank');
-      //   } else {
-      //     router.push(href);
-      //   }
-      // }}
       sx={{
         textDecoration: 'none',
-        // color: primary ? 'primary.main' : 'inherit',
         ...(sx ? sx : {}),
       }}
 
@@ -38,7 +46,7 @@ export default function Link({ children, href, sx, className, primary = false, t
       href={href}
       {...(className ? { className } : {})}
       className={twMerge(disableHover ? '' : 'hover:text-primary', className)}
-      onClick={onClick}
+      onClick={handleClick}
       target={target}
     >
       {children}
