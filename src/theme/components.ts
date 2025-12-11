@@ -76,6 +76,14 @@ export default function (theme: Theme): ThemeOptions['components'] {
       },
     },
 
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: 'inherit',
+        },
+      },
+    },
+
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
@@ -85,15 +93,15 @@ export default function (theme: Theme): ThemeOptions['components'] {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          backgroundColor: '#00000006!important',
+          backgroundColor: '#f8fafc!important',
           borderWidth: '1px',
-          borderColor: '#00000010!important',
-          border: '1px solid #00000010!important',
+          borderColor: '#e2e8f0!important',
+          border: '1px solid #e2e8f0!important',
           '&:hover': {
             backgroundColor: '#E8E8E8',
           },
           '& fieldset': {
-            borderColor: '#00000010!important',
+            borderColor: '#e2e8f0!important',
             borderWidth: '1px!important',
           },
           '&:hover > fieldset': {

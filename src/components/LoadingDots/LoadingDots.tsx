@@ -24,7 +24,12 @@ export default function LoadingDots({ className, centered = false, label }: Load
     );
   }
 
-  return dots;
+  return (
+    <div className="flex flex-col items-center justify-center">
+      {dots}
+      {label ? <div className="text-xs text-gray-500 mt-3">{label}</div> : null}
+    </div>
+  );
 }
 
 const Dot = ({ className }: { className: string }) => (

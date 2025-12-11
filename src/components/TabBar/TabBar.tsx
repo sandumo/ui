@@ -20,10 +20,9 @@ export default function TabBar({ items, orientation = 'vertical', variant = 'ico
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    const index = items.findIndex(item => item.href === router.asPath);
-    console.log('[x] index', index, router.asPath);
+    const index = [...items].reverse().findIndex(item => router.asPath.startsWith(item.href));
     if (index !== -1) {
-      setSelectedItemIndex(index);
+      setSelectedItemIndex(items.length - 1 - index);
     }
   }, [router.asPath, items]);
 
@@ -33,7 +32,7 @@ export default function TabBar({ items, orientation = 'vertical', variant = 'ico
         <Link
           key={index}
           href={item.href}
-          className={twMerge('flex items-center justify-center cursor-pointer rounded-md relative group font-medium', selectedItemIndex === index ? 'text-primary bg-primary/10' : 'hover:bg-gray-100', variant === 'text' ? 'px-2 pt-1 pb-[5px]' : 'w-10 h-10')}
+          className={twMerge('flex items-center justify-center cursor-pointer rounded-md relative group font-medium', selectedItemIndex === index ? 'text-primary bg-primary/10' : 'hover:bg-primary/10', variant === 'text' ? 'px-2 pt-1 pb-[5px]' : 'w-10 h-10')}
         >
           {variant === 'icon' ? item.icon : (
             <div className="text-sm">{item.label}</div>

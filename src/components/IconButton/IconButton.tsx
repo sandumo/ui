@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IconButtonProps as MuiIconButtonProps, IconButton as MuiIconButton, CircularProgress } from '@mui/material';
 import NextLink from 'next/link';
+import { useFormContext } from '../Form';
 
 type IconButtonProps = MuiIconButtonProps & {
   href?: string;
@@ -8,6 +9,7 @@ type IconButtonProps = MuiIconButtonProps & {
   stopPropagation?: boolean;
   download?: boolean;
   target?: string;
+  submit?: boolean;
 }
 
 export default function IconButton({
@@ -18,9 +20,11 @@ export default function IconButton({
   stopPropagation,
   target, // not working for some reason
   disabled,
+  submit,
   ...props
 }: IconButtonProps) {
   const [loading, setLoading] = useState(false);
+  const { pending } = useFormContext();
 
   return (
     <MuiIconButton
@@ -46,9 +50,10 @@ export default function IconButton({
       }}
       disabled={loading || disabled}
       {...props}
+      type={submit ? 'submit' : 'button'}
     >
       {children}
-      {loading && <CircularProgress size={36} thickness={3} sx={{ position: 'absolute' }} />}
+      {(loading || pending) && <CircularProgress size={36} thickness={3} sx={{ position: 'absolute' }} />}
     </MuiIconButton>
   );
 }

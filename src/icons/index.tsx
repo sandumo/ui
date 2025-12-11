@@ -54,7 +54,20 @@ export { default as HomeIcon } from './HomeIcon';
 export { default as ShareIcon } from './ShareIcon';
 export { default as PdfIcon } from './PdfIcon';
 export { default as PrintIcon } from './PrintIcon';
+export { default as CalculateIcon } from './CalculateIcon';
 
 // react icons
+import { IconType } from 'react-icons';
+
 import { LuCalendar } from 'react-icons/lu';
 export const CalendarIcon = LuCalendar as any;
+
+import { LuSparkles } from 'react-icons/lu';
+export const SparklesIcon = LuSparkles as IconType;
+
+import { LuPanelLeftClose } from 'react-icons/lu';
+export const PanelLeftCloseIcon = LuPanelLeftClose as IconType;
+
+import { LuPanelLeftOpen } from 'react-icons/lu';
+export const PanelLeftOpenIcon = LuPanelLeftOpen as IconType;
+// export { default as PanelLeftOpenIcon } from './PanelLeftOpenIcon';
