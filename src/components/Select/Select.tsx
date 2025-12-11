@@ -344,7 +344,7 @@ export default function Select<T>({
 
       {/* Error Message */}
       {name && errors[name] && (
-        <p className="mt-1 text-xs text-error">
+        <p className="mt-1 text-xs text-red-500">
           {errors[name]}
         </p>
       )}
