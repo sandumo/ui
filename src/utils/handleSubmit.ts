@@ -2,19 +2,9 @@ import { BaseSyntheticEvent, FormEvent } from 'react';
 
 export default function handleSubmit<T extends Record<string, any>>(handler: (data: T) => Promise<void> | void): (event: FormEvent<HTMLFormElement>) => Promise<void> {
   return async (event: FormEvent<HTMLFormElement>) => {
-    // console.log('[x] epta got here');
-
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-
-    const files = formData.getAll('files');
-
-    // const targetData = new FormData(event.target);
-
     const e = event as BaseSyntheticEvent;
-
-    // console.log('[x] event', event);
 
     const data = Object.fromEntries((new FormData(event.currentTarget) as any).entries()) as Record<string, any>;
 
@@ -36,7 +26,7 @@ export default function handleSubmit<T extends Record<string, any>>(handler: (da
       }
     }
 
-    for (const [name, file] of Object.values(e.target.elements).map((e: any) => [e.name, e.files])) {
+    for (const [name, file, element] of Object.values(e.target.elements).map((e: any) => [e.name, e.files, e])) {
       if (file) {
         if (file instanceof FileList) {
           resultData[name] = Array.from(file);
@@ -44,9 +34,11 @@ export default function handleSubmit<T extends Record<string, any>>(handler: (da
           resultData[name] = file;
         }
       }
-    }
 
-    // console.log('[x] files', Object.values(e.target.elements).map((e: any) => [e.name, e.files]));
+      if (element.type === 'number') {
+        resultData[name] = Number(element.value);
+      }
+    }
 
     await handler(resultData as T);
   };
