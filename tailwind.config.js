@@ -47,6 +47,10 @@ module.exports = {
         },
       },
 
+      borderWidth: {
+        thin: '0.1px',
+      },
+
 
       // Keyframes
       keyframes: {

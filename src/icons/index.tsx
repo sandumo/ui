@@ -70,4 +70,7 @@ export const PanelLeftCloseIcon = LuPanelLeftClose as IconType;
 
 import { LuPanelLeftOpen } from 'react-icons/lu';
 export const PanelLeftOpenIcon = LuPanelLeftOpen as IconType;
+
+import { LuSearch } from 'react-icons/lu';
+export const LuSearchIcon = LuSearch as IconType;
 // export { default as PanelLeftOpenIcon } from './PanelLeftOpenIcon';
