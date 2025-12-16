@@ -6,11 +6,12 @@ type TooltipProps = {
   children: React.ReactNode;
   placement?: 'top' | 'bottom' | 'left' | 'right';
   showOnMobile?: boolean;
+  className?: string;
 }
 
 type Placement = 'top' | 'bottom' | 'left' | 'right';
 
-export default function Tooltip({ title, children, placement = 'top', showOnMobile = false }: TooltipProps) {
+export default function Tooltip({ title, children, placement = 'top', showOnMobile = false, className }: TooltipProps) {
   const [adjustedPlacement, setAdjustedPlacement] = useState<Placement>(placement);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,7 +81,7 @@ export default function Tooltip({ title, children, placement = 'top', showOnMobi
   }, [placement]);
 
   return (
-    <div className="relative group" ref={containerRef}>
+    <div className={twMerge('relative group', className)} ref={containerRef}>
       <div>{children}</div>
 
       {title ? (

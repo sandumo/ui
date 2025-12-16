@@ -77,3 +77,6 @@ export const LuSearchIcon = LuSearch as IconType;
 
 import { LuGraduationCap } from 'react-icons/lu';
 export const LuGraduationCapIcon = LuGraduationCap as IconType;
+
+import { LuLayoutDashboard } from 'react-icons/lu';
+export const LayoutDashboardIcon = LuLayoutDashboard as IconType;
