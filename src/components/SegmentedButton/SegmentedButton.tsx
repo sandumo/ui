@@ -1,6 +1,8 @@
+import { useThemeContext } from '../../providers/Theme/ThemeProvider';
 import { useFormContext } from '../../components/Form';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { Theme } from '../../providers/Theme/theme';
 
 type SegmentedButtonProps<T> = Omit<React.HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'> & {
   name?: string;
@@ -11,6 +13,9 @@ type SegmentedButtonProps<T> = Omit<React.HTMLAttributes<HTMLDivElement>, 'value
 
   value?: T;
   onChange?: (value: T) => void;
+
+  // styling
+  size?: keyof Theme['components']['SegmentedButton']['size'];
 };
 
 export default function SegmentedButton<T>({
@@ -22,8 +27,11 @@ export default function SegmentedButton<T>({
   value,
   onChange,
   className,
+  size = 'md',
   ...props
 }: SegmentedButtonProps<T>) {
+  const styles = useThemeContext().theme.components.SegmentedButton;
+
   const [internalValue, setInternalValue] = useState<T | null>(value || null);
 
   useEffect(() => {
@@ -44,15 +52,19 @@ export default function SegmentedButton<T>({
     <div>
       {label && <div className="text-xs font-bold mb-1">{label}</div>}
       <input type="hidden" name={`${name}:json`} value={JSON.stringify(internalValue)} />
-      <div className={twMerge('h-[42px] inline-flex border border-slate-200 rounded', className)} {...props}>
+      <div className={twMerge(
+        styles.size[size],
+        'inline-flex border border-slate-200 rounded overflow-hidden', className
+      )} {...props}>
         {options.map((option, index) => (
           <div
             key={getOptionValue(option)}
             onClick={() => handleChange(option)}
             className={twMerge(
               'flex items-center justify-center font-medium h-full px-3 relative cursor-pointer flex-1 whitespace-nowrap bg-slate-50',
-              index === 0 && 'rounded-l-[3px]',
-              index === options.length - 1 && 'rounded-r-[3px]',
+              styles.text[size],
+              // index === 0 && 'rounded-l-[inherit]',
+              // index === options.length - 1 && 'rounded-r-[inherit]',
               index < options.length - 1 && 'after:content-[""] after:absolute after:right-0 after:top-0 after:bottom-0 after:w-[1px] after:bg-divider/80',
               internalValue && getOptionValue(option) === getOptionValue(internalValue) ? 'bg-primary/10 text-primary' : 'hover:bg-slate-100',
             )}

@@ -1,5 +1,13 @@
 export type Color = 'default' | 'primary' | 'secondary' | 'success' | 'error';
 
+export type ThemeComponentSize = {
+  xs: string,
+  sm: string,
+  md: string,
+  lg: string,
+  xl: string,
+}
+
 export type Theme = {
   components: {
     Button: {
@@ -39,6 +47,11 @@ export type Theme = {
         xl: string,
       },
     },
+
+    SegmentedButton: {
+      size: ThemeComponentSize;
+      text: ThemeComponentSize;
+    }
   },
 }
 
@@ -103,6 +116,23 @@ export const theme: Theme = {
         md: '*:!text-xl',
         lg: '*:!text-2xl',
         xl: '*:!text-3xl',
+      },
+    },
+
+    SegmentedButton: {
+      size: {
+        xs: '',
+        sm: 'h-8',
+        md: 'h-[42px]', // match inputs height
+        lg: '',
+        xl: '',
+      },
+      text: {
+        xs: 'text-xs',
+        sm: 'text-sm',
+        md: 'text-md',
+        lg: 'text-lg',
+        xl: 'text-xl',
       },
     },
   },
