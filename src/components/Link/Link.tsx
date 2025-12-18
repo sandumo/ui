@@ -13,6 +13,7 @@ interface LinkProps {
   primary?: boolean;
   disableHover?: boolean;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  download?: boolean;
 }
 
 function appendSlashIfMissing(href: string) {
@@ -23,7 +24,7 @@ function appendSlashIfMissing(href: string) {
   return href + '/';
 }
 
-export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick, disableHover = false }: LinkProps) {
+export default function Link({ children, href, sx, className, primary = false, target = '_self', rel = '', onClick, disableHover = false, ...props }: LinkProps) {
   const router = useRouter();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -48,6 +49,7 @@ export default function Link({ children, href, sx, className, primary = false, t
       className={twMerge(disableHover ? '' : 'hover:text-primary', className || '')}
       onClick={handleClick}
       target={target}
+      {...props}
     >
       {children}
     </Box>
