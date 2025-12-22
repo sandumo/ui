@@ -56,6 +56,7 @@ export { default as PdfIcon } from './PdfIcon';
 export { default as PrintIcon } from './PrintIcon';
 export { default as CalculateIcon } from './CalculateIcon';
 export { default as SupportIcon } from './SupportIcon';
+export { default as SubscriptionsIcon } from './SubscriptionsIcon';
 
 // react icons
 import { IconType } from 'react-icons';
