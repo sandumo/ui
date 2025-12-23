@@ -12,6 +12,7 @@ type FileInputChildrenProps = {
 type FileInputProps = {
   name?: string;
   children: (props: FileInputChildrenProps) => JSX.Element;
+  accept?: string;
 } & (
   {
     multiple: true;
@@ -33,6 +34,7 @@ export default function FileInput({
   multiple,
   file: _file,
   files: _files = [],
+  accept,
   onChange,
 }: FileInputProps) {
   const ref = useRef<HTMLInputElement>(null);
@@ -66,6 +68,7 @@ export default function FileInput({
           ref={ref}
           name={name}
           type="file"
+          accept={accept}
           hidden
           multiple={multiple}
           onChange={(e) => {
