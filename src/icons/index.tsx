@@ -81,3 +81,6 @@ export const LuGraduationCapIcon = LuGraduationCap as IconType;
 
 import { LuLayoutDashboard } from 'react-icons/lu';
 export const LayoutDashboardIcon = LuLayoutDashboard as IconType;
+
+import { LuPaperclip } from 'react-icons/lu';
+export const AttachFileIcon = LuPaperclip as IconType;
