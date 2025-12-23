@@ -53,7 +53,7 @@ export default function IconButton({
       type={submit ? 'submit' : 'button'}
     >
       {children}
-      {(loading || pending) && <CircularProgress size={36} thickness={3} sx={{ position: 'absolute' }} />}
+      {(loading || (pending && submit)) && <CircularProgress size={36} thickness={3} sx={{ position: 'absolute' }} />}
     </MuiIconButton>
   );
 }
