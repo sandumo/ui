@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 type PopupProps = {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: React.ReactNode;
   className?: string;
   rootClassName?: string;
@@ -25,9 +25,11 @@ export default function Popup({ open, onClose, children, className, rootClassNam
   }, [open]);
 
   const handleClose = () => {
-    setIsOpen(false);
-    setTimeout(() => setIsOpen2(false), 270);
-    setTimeout(() => onClose(), 270);
+    if (onClose) {
+      setIsOpen(false);
+      setTimeout(() => setIsOpen2(false), 270);
+      setTimeout(() => onClose(), 270);
+    }
   };
 
   if (!isOpen2) return null;
