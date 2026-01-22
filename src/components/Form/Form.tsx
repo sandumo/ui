@@ -39,7 +39,7 @@ type ErrorsType<T extends Record<string, any>> = Partial<Record<keyof T, string>
 type SubmitHandlerReturnType<T extends Record<string, any>> = void | null | false | undefined | ErrorsType<T>;
 
 export type FormProps<T extends Record<string, any>> = {
-  children: React.ReactNode | (({ errors, pending }: { errors: ErrorsType<T>, pending: boolean }) => React.ReactNode);
+  children: React.ReactNode | (({ errors, pending }: { errors: ErrorsType<T>, pending: boolean, resetErrors: () => void }) => React.ReactNode);
   onSubmit: (data: T) => Promise<SubmitHandlerReturnType<T>> | SubmitHandlerReturnType<T>;
   getValidationSchema?: (root: typeof zod) => zod.ZodRawShape;
   encType?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
@@ -92,7 +92,7 @@ export default function Form<FormData extends Record<string, any>>({
         })(e);
       }}
     >
-      {typeof children === 'function' ? children({ errors: errors as ErrorsType<FormData>, pending }) : children}
+      {typeof children === 'function' ? children({ errors: errors as ErrorsType<FormData>, pending, resetErrors: () => setErrors({}) }) : children}
     </form>
   );
 }

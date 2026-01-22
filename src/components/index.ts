@@ -35,6 +35,9 @@ export { default as Popover } from './Popover';
 export { default as Calendar } from './Calendar';
 export { default as QRCode } from './QRCode';
 export { default as SegmentedButton } from './SegmentedButton';
+export { default as PopoverMenu } from './PopoverMenu';
+export { default as RadioGroup } from './RadioGroup';
+export type { RadioGroupOption, RadioGroupProps } from './RadioGroup';
 
 export {
   Box,
