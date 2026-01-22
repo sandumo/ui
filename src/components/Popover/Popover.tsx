@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
-type Placement = 'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end' | 'right-start' | 'right-end';
+export type Placement = 'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end' | 'right-start' | 'right-end' | 'left-bottom-start';
 
 type PopoverProps = {
   anchorEl: HTMLElement | null;
@@ -123,6 +123,10 @@ export default function Popover({ anchorEl, open, onClose, children, className, 
           t = anchorRect.bottom - contentRect.height;
           l = anchorRect.right + offset;
           break;
+        case 'left-bottom-start':
+          t = anchorRect.bottom - contentRect.height;
+          l = anchorRect.right + offset;
+          break;
         }
 
         return { t, l };
@@ -203,12 +207,14 @@ export default function Popover({ anchorEl, open, onClose, children, className, 
 
       // Final check: ensure popover doesn't overlap with anchor
       // This is a safety check in case smart flipping didn't work as expected
+      // Skip this check for horizontal placements (left/right) where vertical overlap is intentional
+      const isHorizontalPlacement = finalPlacement.startsWith('left') || finalPlacement.startsWith('right');
       const popoverBottom = top + contentRect.height;
 
       // Check for actual overlap: popover overlaps anchor if positioned between anchor's top and bottom
       const hasOverlap = (top < anchorRect.bottom && popoverBottom > anchorRect.top);
 
-      if (hasOverlap) {
+      if (hasOverlap && !isHorizontalPlacement) {
         // Determine if we should place above or below based on available space
         const spaceAbove = anchorRect.top - margin;
         const spaceBelow = viewport.height - anchorRect.bottom - margin;
