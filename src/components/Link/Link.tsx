@@ -45,7 +45,6 @@ export default function Link({ children, href, sx, className, primary = false, t
 
       rel={rel}
       href={href}
-      // {...(className ? { className } : {})}
       className={twMerge(disableHover ? '' : 'hover:text-primary', className || '')}
       onClick={handleClick}
       target={target}
