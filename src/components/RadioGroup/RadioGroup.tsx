@@ -6,6 +6,7 @@ export interface RadioGroupOption<T extends string | number = string | number> {
   value: T;
   label: ReactNode;
   description: string;
+  disabled?: boolean | string;
 }
 
 export interface RadioGroupProps<T extends string | number = string | number> {
@@ -55,7 +56,7 @@ export default function RadioGroup<T extends string | number>({
   return (
     <div>
       {name && <input type="hidden" name={name} value={value ?? ''} />}
-      
+
       <div className={twMerge('flex flex-col gap-1', disabled && 'opacity-50', className)}>
         {options.map(option => (
           <div
@@ -63,13 +64,13 @@ export default function RadioGroup<T extends string | number>({
             className={twMerge(
               'bg-gray-100 border border-gray-200 rounded-lg px-2 py-1 flex items-center gap-3',
               value === option.value && 'bg-primary/5 border-primary',
-              disabled
+              disabled || option.disabled
                 ? 'cursor-not-allowed'
                 : value === option.value
                   ? 'cursor-default'
                   : 'cursor-pointer hover:bg-gray-200 hover:border-gray-300'
             )}
-            onClick={() => handleChange(option.value)}
+            {...(!option.disabled && { onClick: () => handleChange(option.value) })}
           >
             <div>
               <div
@@ -89,6 +90,7 @@ export default function RadioGroup<T extends string | number>({
                 {option.label}
               </div>
               <div className="text-xs text-gray-500">{option.description}</div>
+              {option.disabled && typeof option.disabled === 'string' && <div className="text-xs text-red-500">{option.disabled}</div>}
             </div>
           </div>
         ))}
