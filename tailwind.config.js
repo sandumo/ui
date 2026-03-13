@@ -117,10 +117,11 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addVariant }) {
+    plugin(function ({ addVariant, addUtilities }) {
       addVariant('not-last', '&:not(:last-child)');
       addVariant('not-last-child', '& > *:not(:last-child)');
       addVariant('not-first-child', '& > *:not(:first-child)');
+      addUtilities({ '.squircle': { 'corner-shape': 'squircle' } })
     }),
     require('tailwindcss-safe-area'),
   ],
